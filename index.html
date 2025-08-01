@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - 页面不见了</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    
+    <!-- 配置Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366F1',
+                        accent: '#EC4899',
+                        dark: '#1E293B',
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-gradient {
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            .floating {
+                animation: floating 6s ease-in-out infinite;
+            }
+            .floating-delay-1 {
+                animation: floating 6s ease-in-out 1s infinite;
+            }
+            .floating-delay-2 {
+                animation: floating 6s ease-in-out 2s infinite;
+            }
+            .spin-slow {
+                animation: spin 15s linear infinite;
+            }
+            .pulse-soft {
+                animation: pulse-soft 3s infinite;
+            }
+            .hover-jump {
+                transition: transform 0.3s ease;
+            }
+            .hover-jump:hover {
+                transform: translateY(-10px);
+            }
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        /* 快速移动的光点动画 */
+        @keyframes fastFloat {
+            0% { transform: translate(0px, 0px) rotate(0deg); }
+            25% { transform: translate(50px, -30px) rotate(10deg); }
+            50% { transform: translate(100px, 20px) rotate(0deg); }
+            75% { transform: translate(30px, 50px) rotate(-10deg); }
+            100% { transform: translate(0px, 0px) rotate(0deg); }
+        }
+    </style>
+    
+    <!-- 引入字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-gray-900 to-gray-800 min-h-screen flex flex-col items-center justify-center overflow-hidden p-4">
+    <!-- 背景装饰元素 -->
+    <div class="fixed inset-0 z-0">
+        <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/20 rounded-full filter blur-3xl floating"></div>
+        <div class="absolute bottom-1/3 right-1/4 w-80 h-80 bg-accent/20 rounded-full filter blur-3xl floating-delay-1"></div>
+        <div class="absolute top-1/2 right-1/3 w-48 h-48 bg-blue-400/10 rounded-full filter blur-3xl floating-delay-2"></div>
+    </div>
+    
+    <!-- 主要内容 -->
+    <div class="relative z-10 max-w-3xl w-full text-center">
+        <!-- 404数字动画 -->
+        <div class="relative inline-block mb-8">
+            <span class="text-[clamp(6rem,20vw,12rem)] font-extrabold text-gradient bg-gradient-to-r from-primary to-accent">
+                404
+            </span>
+            <div class="absolute -top-10 -right-10 w-20 h-20 md:w-32 md:h-32">
+                <svg class="w-full h-full text-accent spin-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- 标题和描述 -->
+        <h2 class="text-[clamp(1.5rem,5vw,2.5rem)] font-bold text-white mb-6 tracking-tight">
+            页面好像消失在宇宙中了
+        </h2>
+        
+        <p class="text-gray-300 text-lg md:text-xl mb-10 max-w-xl mx-auto leading-relaxed">
+            我们找不到你要的页面，它可能被黑洞吸走了，
+            或者正在星际旅行。别担心，我们可以帮你回到安全区域。
+        </p>
+        
+        <!-- 漂浮元素 -->
+        <div class="flex justify-center gap-6 md:gap-10 mb-16">
+            <div class="w-12 h-12 md:w-16 md:h-16 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center floating hover-jump">
+                <i class="fa fa-search text-white text-xl"></i>
+            </div>
+            <div class="w-12 h-12 md:w-16 md:h-16 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center floating-delay-1 hover-jump">
+                <i class="fa fa-compass text-white text-xl"></i>
+            </div>
+            <div class="w-12 h-12 md:w-16 md:h-16 bg-white/10 backdrop-blur-sm rounded-full flex items-center justify-center floating-delay-2 hover-jump">
+                <i class="fa fa-rocket text-white text-xl"></i>
+            </div>
+        </div>
+        
+        <!-- 动态提示 -->
+        <p class="text-gray-400 pulse-soft text-sm md:text-base">
+            <i class="fa fa-meteor mr-2"></i> 提示：页面可能在 <span id="countdown" class="text-accent font-semibold">10</span> 秒后返回，也可能不会...
+        </p>
+    </div>
+    
+    <!-- 页脚 -->
+    <footer class="relative z-10 mt-auto text-gray-500 text-xs md:text-sm">
+        <p>© 2023 星际导航中心 | 错误代码：404-AB-789</p>
+    </footer>
+
+    <script>
+        // 倒计时动画效果
+        let countdown = 10;
+        const countdownEl = document.getElementById('countdown');
+        
+        setInterval(() => {
+            if (countdown > 0) {
+                countdown--;
+                countdownEl.textContent = countdown;
+                
+                // 添加数字变化动画
+                countdownEl.classList.add('scale-125', 'text-white');
+                setTimeout(() => {
+                    countdownEl.classList.remove('scale-125', 'text-white');
+                }, 300);
+            }
+        }, 1000);
+        
+        // 随机生成快速移动的小光点
+        function createFloatingDots() {
+            const container = document.querySelector('.fixed');
+            const dotsCount = 30; // 增加光点数量以增强效果
+            
+            for (let i = 0; i < dotsCount; i++) {
+                const dot = document.createElement('div');
+                const size = Math.random() * 4 + 1; // 光点更小
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 3; // 更短的延迟
+                const duration = Math.random() * 3 + 2; // 更快的速度（2-5秒）
+                const opacity = Math.random() * 0.8 + 0.2; // 不同的透明度
+                
+                // 随机颜色，增加变化
+                const colors = ['rgba(255, 255, 255, ' + opacity + ')', 
+                                'rgba(99, 102, 241, ' + opacity + ')',
+                                'rgba(236, 72, 153, ' + opacity + ')'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                dot.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    background-color: ${color};
+                    border-radius: 50%;
+                    top: ${posY}%;
+                    left: ${posX}%;
+                    animation: fastFloat ${duration}s ease-in-out ${delay}s infinite;
+                    z-index: 0;
+                `;
+                
+                container.appendChild(dot);
+            }
+        }
+        
+        // 页面加载完成后创建漂浮点
+        window.addEventListener('load', createFloatingDots);
+    </script>
+</body>
+</html>
+
