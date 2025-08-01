@@ -1,29 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <title>BV新盛苹果下载</title>
-    <style>
-        /* 自定义淡蓝色背景 */
-       .light-blue-bg {
-            background-color: #76bbff;
+    <link rel="icon" type="image/x-icon" href="img/logo1.png">
+    
+    <!-- 配置Tailwind -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#76bbff',
+                        secondary: '#4a98e8',
+                        accent: '#EC4899', // 粉红色
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-gradient {
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            .floating {
+                animation: floating 6s ease-in-out infinite;
+            }
+            .floating-delay-1 {
+                animation: floating 6s ease-in-out 1s infinite;
+            }
+            .floating-delay-2 {
+                animation: floating 6s ease-in-out 2s infinite;
+            }
+            .spin-slow {
+                animation: spin 15s linear infinite;
+            }
+            .pulse-soft {
+                animation: pulse-soft 3s infinite;
+            }
+            .glow {
+                box-shadow: 0 0 20px rgba(118, 187, 255, 0.6);
+            }
+            .glow-hover {
+                transition: all 0.3s ease;
+            }
+            .glow-hover:hover {
+                box-shadow: 0 0 30px rgba(118, 187, 255, 0.8);
+                transform: translateY(-5px) scale(1.08);
+            }
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+        
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        @keyframes buttonPulse {
+            0% { box-shadow: 0 0 0 0 rgba(118, 187, 255, 0.4); }
+            70% { box-shadow: 0 0 0 20px rgba(118, 187, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(118, 187, 255, 0); }
+        }
+        
+        .button-pulse {
+            animation: buttonPulse 2s infinite;
+        }
+        
+        /* 快速移动的光点动画 */
+        @keyframes fastFloat {
+            0% { transform: translate(0px, 0px) rotate(0deg); }
+            25% { transform: translate(50px, -30px) rotate(10deg); }
+            50% { transform: translate(100px, 20px) rotate(0deg); }
+            75% { transform: translate(30px, 50px) rotate(-10deg); }
+            100% { transform: translate(0px, 0px) rotate(0deg); }
+        }
+        
+        /* 蓝到粉红的渐变按钮 */
+        .blue-to-pink {
+            background: linear-gradient(90deg, #4a98e8, #EC4899);
         }
     </style>
 </head>
 
-<body class="bg-gray-100 min-h-screen flex flex-col items-center justify-center">
-    <h1 class="text-3xl font-bold mb-8">BV新盛苹果下载</h1>
-    <div class="flex flex-col gap-4 w-full max-w-md">
-        <button onclick="randomRedirect()" class="bg-blue-400 text-white py-3 px-6 rounded-md text-center hover:bg-blue-500 transition-colors">
-            苹果APP下载
-        </button>
+<body class="bg-black min-h-screen flex flex-col items-center justify-center overflow-hidden p-4 text-white">
+    <!-- 背景装饰元素 -->
+    <div class="fixed inset-0 z-0 pointer-events-none">
+        <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-primary/20 rounded-full filter blur-3xl floating"></div>
+        <div class="absolute bottom-1/3 right-1/4 w-80 h-80 bg-secondary/20 rounded-full filter blur-3xl floating-delay-1"></div>
+        <div class="absolute top-1/2 right-1/3 w-48 h-48 bg-blue-400/10 rounded-full filter blur-3xl floating-delay-2"></div>
+    </div>
+    
+    <!-- 主要内容 -->
+    <div class="relative z-10 max-w-3xl w-full text-center">
+        <!-- 标题动画 -->
+        <div class="relative inline-block mb-12">
+            <span class="text-[clamp(4rem,15vw,8rem)] font-extrabold text-gradient bg-gradient-to-r from-primary to-secondary">
+                BV新盛下载
+            </span>
+            <div class="absolute -top-10 -right-10 w-20 h-20">
+                <svg class="w-full h-full text-primary spin-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- 修改后的按钮 -->
+        <div class="flex justify-center mb-10">
+            <button onclick="randomRedirect()" class="group relative overflow-hidden blue-to-pink text-black font-bold py-4 px-12 rounded-full text-lg glow glow-hover button-pulse">
+                <span class="relative z-10 flex items-center">
+                    <i class="fa fa-download mr-3 group-hover:rotate-180 transition-transform duration-500"></i>
+                    苹果APP下载
+                    <i class="fa fa-arrow-right ml-3 group-hover:translate-x-2 transition-transform duration-300"></i>
+                </span>
+                <!-- 按钮内部发光效果 -->
+                <span class="absolute inset-0 bg-white/10 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></span>
+            </button>
+        </div>
+        
+        <!-- 动态提示 -->
+        <p class="text-gray-300 pulse-soft text-sm md:text-base">
+            <i class="fa fa-bolt mr-2 text-primary"></i> 提示：我们将为您选择最佳下载线路，速度更快更稳定
+        </p>
     </div>
 
     <script>
-        // 定义3个要随机跳转的链接
+        // 随机生成快速移动的小光点（放大2倍）
+        function createFloatingDots() {
+            const container = document.querySelector('.fixed');
+            const dotsCount = 30;
+            
+            for (let i = 0; i < dotsCount; i++) {
+                const dot = document.createElement('div');
+                // 光点大小放大2倍（原先是Math.random() * 4 + 1）
+                const size = Math.random() * 8 + 2;
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                const delay = Math.random() * 3;
+                const duration = Math.random() * 3 + 2;
+                const opacity = Math.random() * 0.8 + 0.2;
+                
+                // 颜色与按钮蓝到粉红渐变呼应
+                const colors = ['rgba(118, 187, 255, ' + opacity + ')',
+                               'rgba(74, 152, 232, ' + opacity + ')',
+                               'rgba(236, 72, 153, ' + opacity + ')',
+                               'rgba(255, 105, 180, ' + opacity + ')'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                dot.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    background-color: ${color};
+                    border-radius: 50%;
+                    top: ${posY}%;
+                    left: ${posX}%;
+                    animation: fastFloat ${duration}s ease-in-out ${delay}s infinite;
+                    z-index: 0;
+                `;
+                
+                container.appendChild(dot);
+            }
+        }
+        
+        // 页面加载完成后创建漂浮点
+        window.addEventListener('load', createFloatingDots);
+        
+        // 下载跳转功能
         const urls = [
             "itms-services://?action=download-manifest&url=https://jt-asia.katechilko.com/xs.plist",
             "itms-services://?action=download-manifest&url=https://jt-asia.katechilko.com/xs1.plist",
@@ -31,16 +193,10 @@
             "https://app.cvzawt7i7opl.com/"
         ];
 
-        // 随机跳转函数
         function randomRedirect() {
-            // 生成0到2之间的随机整数
             const randomIndex = Math.floor(Math.random() * urls.length);
-            // 跳转到随机选中的链接
             window.location.href = urls[randomIndex];
         }
     </script>
 </body>
-
-
-
 </html>
