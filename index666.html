@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>富贵科技模板</title>
+    <!-- Tailwind CSS v3 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1E40AF',
+                        secondary: '#F59E0B',
+                        accent: '#DC2626',
+                        dark: '#1F2937',
+                        light: '#F3F4F6'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                    animation: {
+                        'scroll-x': 'scrollX 20s linear infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        scrollX: {
+                            '0%': { transform: 'translateX(100%)' },
+                            '100%': { transform: 'translateX(-100%)' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            }
+            .text-shadow-lg {
+                text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+            }
+            .backdrop-blur {
+                backdrop-filter: blur(8px);
+            }
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+            .gradient-text {
+                background-clip: text;
+                -webkit-background-clip: text;
+                color: transparent;
+                background-image: linear-gradient(90deg, #F59E0B, #DC2626);
+            }
+            .square-container {
+                position: relative;
+                width: 100%;
+                padding-top: 100%; /* 1:1 Aspect Ratio */
+            }
+            .square-content {
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .two-line-text {
+                display: -webkit-box;
+                
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                line-height: 1.5;
+                max-height: 3em; /* 2 lines * line-height */
+            }
+            .bg-image-cover {
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+            .bg-image-contain {
+                background-size: contain;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+            .bg-image-fill {
+                background-size: 100% 100%;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+            .bg-image-scale-down {
+                background-size: scale-down;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+        }
+
+        body {
+            overflow-x: hidden;
+            padding: 0;
+            margin: 0;
+            font-family: 'Inter', system-ui, sans-serif;
+        }
+
+        .hero-section {
+            background-image: url('static/img/bg.68d9ab3f.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+        }
+
+        .marquee-container {
+            white-space: nowrap;
+            overflow: hidden;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 8px;
+        }
+
+        .marquee-content {
+            display: inline-block;
+            animation: scrollX 20s linear infinite;
+        }
+
+        .marquee-container:hover .marquee-content {
+            animation-play-state: paused;
+        }
+
+        .bottom-nav {
+            background-image: url('static/img/bg1.jpg');
+            background-size: cover;
+            background-position: center;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .nav-btn {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8px 0;
+            color: white;
+            font-size: 12px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-btn.active {
+            color: #F59E0B;
+        }
+
+        .nav-btn i {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+
+        .ad-banner {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .download-section {
+            background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
+            border-radius: 16px;
+            padding: 16px;
+            color: white;
+            margin: 16px;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .download-btn {
+            background-color: #F59E0B;
+            color: white;
+            border-radius: 20px;
+            padding: 8px 20px;
+            font-weight: bold;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes scrollX {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+    <!-- 主内容区域 -->
+    <div class="relative min-h-screen flex flex-col">
+        <!-- 英雄区域 -->
+        <section class="hero-section flex-grow">
+        <!-- 顶部标题区域 -->
+        <div class="relative w-full h-16 md:h-20">
+            <img src="static/img/nav_bg.c454dbe6.png" alt="标题背景" class="w-full h-full object-cover">
+            <div class="absolute inset-0 flex items-center justify-center">
+                <img src="static/img/168.634d97e9.png" alt="鼎盛计划" class="h-12 md:h-16 object-contain">
+            </div>
+        </div>
+
+        <!-- 滚动文字 -->
+        <div class="mt-2 px-4">
+            <div class="marquee-container py-2 px-4">
+                <div class="marquee-content">
+                    <span class="text-white text-lg font-bold">
+                        富贵科技模板 | 祝愿各位老板财源广进！ | 安全可靠 | 高效稳定 | 
+                        富贵科技模板 | 祝愿各位老板财源广进！ | 安全可靠 | 高效稳定 | 
+                    </span>
+                </div>
+                <div class="marquee-content" aria-hidden="true">
+                    <span class="text-white text-lg font-bold">
+                        富贵科技模板 | 祝愿各位老板财源广进！ | 安全可靠 | 高效稳定 | 
+                        富贵科技模板 | 祝愿各位老板财源广进！ | 安全可靠 | 高效稳定 | 
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 中间广告区域 -->
+        <div class="mt-2 px-4">
+            <div class="ad-banner" style="width: calc(100% - 8px);">
+                <div class="relative overflow-hidden" style="height: 126px;">
+                    <div class="absolute inset-0 flex transition-transform duration-500" id="adSlider">
+                        <div class="min-w-full">
+                            <a href="https://www.mjweb70.xyz/">
+                                <img src="static/img/zf1.png" alt="广告横幅1" class="w-full h-full object-cover rounded-xl">
+                            </a>
+                        </div>
+                        <div class="min-w-full">
+                            <a href="https://www.mjweb70.xyz/">
+                                <img src="static/img/zf1.png" alt="广告横幅2" class="w-full h-full object-cover rounded-xl">
+                            </a>
+                        </div>
+                        <div class="min-w-full">
+                            <a href="https://www.mjweb70.xyz/">
+                                <img src="static/img/zf1.png" alt="广告横幅3" class="w-full h-full object-cover rounded-xl">
+                            </a>
+                        </div>
+                        <div class="min-w-full">
+                            <a href="https://www.mjweb70.xyz/">
+                                <img src="static/img/zf1.png" alt="广告横幅4" class="w-full h-full object-cover rounded-xl">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 新增功能模块区域 -->
+        <div class="mt-4 px-4 space-y-5">
+            <!-- 模块1：现代卡片风格 -->
+            
+            
+            <!-- 模块5：自定义背景图片风格 -->
+            <div class="rounded-2xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden bg-transparent border-0">
+                <!-- 背景图片容器 -->
+                <div class="absolute inset-0 z-0">
+                    <!-- 示例：添加一个带有透明部分的背景图片 -->
+                    <img src="static/img/bg_item_1.b8bea6d9.png" alt="背景" class="w-full h-full object-cover opacity-25">
+                </div>
+                
+                <div class="flex items-center relative z-5">
+                    <div class="w-3/10 flex-shrink-0 flex items-center justify-center">
+                        <img src="static/img/168.fbb507dd.png" alt="用户管理" class="w-full h-auto max-h-24">
+                    </div>
+                    <div class="w-7/10 pl-4">
+                        <h3 class="text-xl font-bold text-white text-shadow">名爵房间：999999</h3>
+                        <p class="text-white text-shadow mt-2 two-line-text">富贵科技模板|加入PG电子试玩|试玩需开VPN至香港或外网</p>
+                        <div class="flex space-x-2 mt-3">
+                            <a href="https://www.mjweb70.xyz/" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition-all duration-300 flex-1 text-center">
+                                真实娱乐
+                            </a>
+                            <a href="https://www.mjweb70.xyz/" class="bg-blue-800 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-900 transition-all duration-300 flex-1 text-center">
+                                在线客服
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rounded-2xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden bg-transparent border-0">
+                <!-- 背景图片容器 -->
+                <div class="absolute inset-0 z-0">
+                    <!-- 示例：添加一个带有透明部分的背景图片 -->
+                    <img src="static/img/bg_item_3.06fa1fa2.png" alt="背景" class="w-full h-full object-cover opacity-25">
+                </div>
+                
+                <div class="flex items-center relative z-5">
+                    <div class="w-3/10 flex-shrink-0 flex items-center justify-center">
+                        <img src="static/img/pg1.png" alt="用户管理" class="w-full h-auto max-h-24">
+                    </div>
+                    <div class="w-7/10 pl-4">
+                        <h3 class="text-xl font-bold text-white text-shadow">少林足球</h3>
+                        <p class="text-white text-shadow mt-2 two-line-text">富贵科技模板|加入PG电子试玩|试玩需开VPN至香港或外网</p>
+                        <div class="flex space-x-2 mt-3">
+                            <a href="少林足球.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition-all duration-300 flex-1 text-center">
+                                进入试玩
+                            
+                            </a>
+                            <a href="https://www.mjweb70.xyz/" class="bg-blue-800 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-900 transition-all duration-300 flex-1 text-center">
+                                真实娱乐
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rounded-2xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden bg-transparent border-0">
+                <!-- 背景图片容器 -->
+                <div class="absolute inset-0 z-0">
+                    <!-- 示例：添加一个带有透明部分的背景图片 -->
+                    <img src="static/img/bg_item_3.06fa1fa2.png" alt="背景" class="w-full h-full object-cover opacity-25">
+                </div>
+                
+                <div class="flex items-center relative z-5">
+                    <div class="w-3/10 flex-shrink-0 flex items-center justify-center">
+                        <img src="static/img/pg2.png" alt="用户管理" class="w-full h-auto max-h-24">
+                    </div>
+                    <div class="w-7/10 pl-4">
+                        <h3 class="text-xl font-bold text-white text-shadow">麻将胡了2</h3>
+                        <p class="text-white text-shadow mt-2 two-line-text">富贵科技模板|加入PG电子试玩|试玩需开VPN至香港或外网</p>
+                        <div class="flex space-x-2 mt-3">
+                            <a href="麻将胡了2.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition-all duration-300 flex-1 text-center">
+                                进入试玩
+                            
+                            </a>
+                            <a href="https://www.mjweb70.xyz/" class="bg-blue-800 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-900 transition-all duration-300 flex-1 text-center">
+                                真实娱乐
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rounded-2xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden bg-transparent border-0">
+                <!-- 背景图片容器 -->
+                <div class="absolute inset-0 z-0">
+                    <!-- 示例：添加一个带有透明部分的背景图片 -->
+                    <img src="static/img/bg_item_3.06fa1fa2.png" alt="背景" class="w-full h-full object-cover opacity-25">
+                </div>
+                
+                <div class="flex items-center relative z-5">
+                    <div class="w-3/10 flex-shrink-0 flex items-center justify-center">
+                        <img src="static/img/pg4.png" alt="用户管理" class="w-full h-auto max-h-24">
+                    </div>
+                    <div class="w-7/10 pl-4">
+                        <h3 class="text-xl font-bold text-white text-shadow">金钱兔</h3>
+                        <p class="text-white text-shadow mt-2 two-line-text">富贵科技模板|加入PG电子试玩|试玩需开VPN至香港或外网</p>
+                        <div class="flex space-x-2 mt-3">
+                            <a href="金钱兔.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition-all duration-300 flex-1 text-center">
+                                进入试玩
+                            
+                            </a>
+                            <a href="https://www.mjweb70.xyz/" class="bg-blue-800 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-900 transition-all duration-300 flex-1 text-center">
+                                真实娱乐
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rounded-2xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden bg-transparent border-0">
+                <!-- 背景图片容器 -->
+                <div class="absolute inset-0 z-0">
+                    <!-- 示例：添加一个带有透明部分的背景图片 -->
+                    <img src="static/img/bg_item_3.06fa1fa2.png" alt="背景" class="w-full h-full object-cover opacity-25">
+                </div>
+                
+                <div class="flex items-center relative z-5">
+                    <div class="w-3/10 flex-shrink-0 flex items-center justify-center">
+                        <img src="static/img/pg3.png" alt="用户管理" class="w-full h-auto max-h-24">
+                    </div>
+                    <div class="w-7/10 pl-4">
+                        <h3 class="text-xl font-bold text-white text-shadow">赏金大对决</h3>
+                        <p class="text-white text-shadow mt-2 two-line-text">富贵科技模板|加入PG电子试玩|试玩需开VPN至香港或外网</p>
+                        <div class="flex space-x-2 mt-3">
+                            <a href="赏金大对决.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition-all duration-300 flex-1 text-center">
+                                进入试玩
+                            
+                            </a>
+                            <a href="https://www.mjweb70.xyz/" class="bg-blue-800 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-900 transition-all duration-300 flex-1 text-center">
+                                真实娱乐
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                        <div class="rounded-2xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden bg-transparent border-0">
+                <!-- 背景图片容器 -->
+                <div class="absolute inset-0 z-0">
+                    <!-- 示例：添加一个带有透明部分的背景图片 -->
+                    <img src="static/img/bg_item_3.06fa1fa2.png" alt="背景" class="w-full h-full object-cover opacity-25">
+                </div>
+                
+                <div class="flex items-center relative z-5">
+                    <div class="w-3/10 flex-shrink-0 flex items-center justify-center">
+                        <img src="static/img/pg2.png" alt="用户管理" class="w-full h-auto max-h-24">
+                    </div>
+                    <div class="w-7/10 pl-4">
+                        <h3 class="text-xl font-bold text-white text-shadow">招财喵</h3>
+                        <p class="text-white text-shadow mt-2 two-line-text">富贵科技模板|加入PG电子试玩|试玩需开VPN至香港或外网</p>
+                        <div class="flex space-x-2 mt-3">
+                            <a href="招财喵.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition-all duration-300 flex-1 text-center">
+                                进入试玩
+                            
+                            </a>
+                            <a href="https://www.mjweb70.xyz/" class="bg-blue-800 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-900 transition-all duration-300 flex-1 text-center">
+                                真实娱乐
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rounded-2xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden bg-transparent border-0">
+                <!-- 背景图片容器 -->
+                <div class="absolute inset-0 z-0">
+                    <!-- 示例：添加一个带有透明部分的背景图片 -->
+                    <img src="static/img/bg_item_3.06fa1fa2.png" alt="背景" class="w-full h-full object-cover opacity-25">
+                </div>
+                
+                <div class="flex items-center relative z-5">
+                    <div class="w-3/10 flex-shrink-0 flex items-center justify-center">
+                        <img src="static/img/pg2.png" alt="用户管理" class="w-full h-auto max-h-24">
+                    </div>
+                    <div class="w-7/10 pl-4">
+                        <h3 class="text-xl font-bold text-white text-shadow">极速赢家</h3>
+                        <p class="text-white text-shadow mt-2 two-line-text">富贵科技模板|加入PG电子试玩|试玩需开VPN至香港或外网</p>
+                        <div class="flex space-x-2 mt-3">
+                            <a href="极速赢家.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition-all duration-300 flex-1 text-center">
+                                进入试玩
+                            
+                            </a>
+                            <a href="https://www.mjweb70.xyz/" class="bg-blue-800 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-900 transition-all duration-300 flex-1 text-center">
+                                真实娱乐
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rounded-2xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden bg-transparent border-0">
+                <!-- 背景图片容器 -->
+                <div class="absolute inset-0 z-0">
+                    <!-- 示例：添加一个带有透明部分的背景图片 -->
+                    <img src="static/img/bg_item_3.06fa1fa2.png" alt="背景" class="w-full h-full object-cover opacity-25">
+                </div>
+                
+                <div class="flex items-center relative z-5">
+                    <div class="w-3/10 flex-shrink-0 flex items-center justify-center">
+                        <img src="static/img/pg2.png" alt="用户管理" class="w-full h-auto max-h-24">
+                    </div>
+                    <div class="w-7/10 pl-4">
+                        <h3 class="text-xl font-bold text-white text-shadow">赏金女王</h3>
+                        <p class="text-white text-shadow mt-2 two-line-text">富贵科技模板|加入PG电子试玩|试玩需开VPN至香港或外网</p>
+                        <div class="flex space-x-2 mt-3">
+                            <a href="赏金女王.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition-all duration-300 flex-1 text-center">
+                                进入试玩
+                            
+                            </a>
+                            <a href="https://www.mjweb70.xyz/" class="bg-blue-800 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-900 transition-all duration-300 flex-1 text-center">
+                                真实娱乐
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="rounded-2xl p-2 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden bg-transparent border-0">
+                <!-- 背景图片容器 -->
+                <div class="absolute inset-0 z-0">
+                    <!-- 示例：添加一个带有透明部分的背景图片 -->
+                    <img src="static/img/bg_item_3.06fa1fa2.png" alt="背景" class="w-full h-full object-cover opacity-25">
+                </div>
+                
+                <div class="flex items-center relative z-5">
+                    <div class="w-3/10 flex-shrink-0 flex items-center justify-center">
+                        <img src="static/img/pg2.png" alt="用户管理" class="w-full h-auto max-h-24">
+                    </div>
+                    <div class="w-7/10 pl-4">
+                        <h3 class="text-xl font-bold text-white text-shadow">赏金船长</h3>
+                        <p class="text-white text-shadow mt-2 two-line-text">富贵科技模板|加入PG电子试玩|试玩需开VPN至香港或外网</p>
+                        <div class="flex space-x-2 mt-3">
+                            <a href="赏金船长.html" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-700 transition-all duration-300 flex-1 text-center">
+                                进入试玩
+                            
+                            </a>
+                            <a href="https://www.mjweb70.xyz/" class="bg-blue-800 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-blue-900 transition-all duration-300 flex-1 text-center">
+                                真实娱乐
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 留空区域 -->
+        <div class="h-48"></div>
+    </section>
+    
+    <!-- 固定底部区域 -->
+    <div class="fixed bottom-0 left-0 right-0 bg-transparent z-5">
+        <!-- 新的下载区域 -->
+        <div class="bg-gradient-to-r from-blue-600 to-blue-400 rounded-2xl mx-4 mb-2 p-2 flex items-center justify-between">
+            <div class="flex items-center">
+                <div class="bg-white rounded-full p-2 mr-3">
+                    <i class="fa fa-download text-blue-600 text-xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-white font-bold text-lg">立即下载APP</h3>
+                    <p class="text-blue-100 text-sm">体验更多精彩功能</p>
+                </div>
+            </div>
+            <a href="https://www.mj98.app/" class="bg-white text-blue-600 font-bold py-2 px-6 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 inline-block">
+                免费下载
+            </a>
+        </div>
+
+        <!-- 底部导航 -->
+        <div class="bottom-nav py-2 px-4">
+            <div class="flex justify-around items-center">
+                <a href="https://www.mjweb70.xyz/" class="nav-btn active">
+                    <img src="static/img/di1.png" alt="在线客服" class="w-16 h-16">
+                </a>
+                <a href="https://www.mjweb70.xyz/" class="nav-btn">
+                    <img src="static/img/di2.png" alt="立即投注" class="w-16 h-16">
+                </a>
+                <a href="https://www.mjweb70.xyz/" class="nav-btn">
+                    <img src="static/img/di3.png" alt="168开奖" class="w-16 h-16">
+                </a>
+                <a href="https://www.mjweb70.xyz/" class="nav-btn">
+                    <img src="static/img/di4.png" alt="个人中心" class="w-16 h-16">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 模拟后台数据获取
+            function fetchMarqueeText() {
+                // 实际项目中这里会是API请求
+                // 这里使用模拟数据
+                const marqueeTexts = [
+                    "鼎盛计划专注于为您提供最优质的服务 | 24小时不间断运行 | 安全可靠 | 高效稳定 | ",
+                    "鼎盛计划已升级 | 新增智能调度功能 | 支持多种发送模式 | 后台管理更加便捷 | ",
+                    "系统运行状态良好 | 今日已成功发送12,345条信息 | 成功率100% | 平均响应时间0.3秒 | "
+                ];
+                
+                // 随机选择一个滚动文本
+                const randomText = marqueeTexts[Math.floor(Math.random() * marqueeTexts.length)];
+                
+                // 更新滚动文本
+                const marqueeElements = document.querySelectorAll('.marquee-content');
+                marqueeElements.forEach(el => {
+                    el.innerHTML = `<span class="text-white text-lg font-bold">${randomText}${randomText}</span>`;
+                });
+            }
+
+            // 每30秒更新一次滚动文本
+            setInterval(fetchMarqueeText, 30000);
+
+            // 底部导航按钮点击事件
+            const navButtons = document.querySelectorAll('.nav-btn');
+            navButtons.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    // 移除所有按钮的active类
+                    navButtons.forEach(b => b.classList.remove('active'));
+                    
+                    // 为当前点击的按钮添加active类
+                    this.classList.add('active');
+                });
+            });
+
+            // 广告轮播功能
+            let currentSlide = 0;
+            const slider = document.getElementById('adSlider');
+            const slides = slider.children;
+            const slideCount = slides.length;
+            
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slideCount;
+                slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+            }
+            
+            // 每3秒切换一次广告图片
+            setInterval(nextSlide, 3000);
+        });
+    </script>
+<!-- 静默音频元素：静音+隐藏控制条 -->
+<audio id="autoPlayAudio" preload="auto" muted autoplay>
+  <source src="static/yy/yy.MP3" type="audio/mpeg">
+</audio>
+
+<script>
+  // 可选：用户有交互后自动取消静音（如点击页面任意位置）
+  document.addEventListener('click', () => {
+    const audio = document.getElementById('autoPlayAudio');
+    if (audio.muted) {
+      audio.muted = false; // 取消静音
+    }
+  }, { once: true }); // 仅触发一次
+</script>
+</body>
+</html>
