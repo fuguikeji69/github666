@@ -1,0 +1,461 @@
+.sh_xzlist {
+    width: 100%;
+    font-size: 16px;
+    color: #333
+}
+
+.sh_xzlist,
+.sh_xzlist li {
+    height: auto;
+    overflow: hidden
+}
+
+.sh_xzlist li {
+    width: 48px;
+    float: left;
+    text-align: center;
+    margin-right: 23px
+}
+
+.sh_xzlist li span {
+    display: block;
+    width: 100%;
+    height: 30px;
+    font-size: 16px
+}
+
+.sh_xzlist .lastsh_xzlist {
+    margin-right: 0;
+    margin-left: 28px
+}
+
+.bodybox .haomaqu .haomaqul .haomaline .numberqu {
+    height: auto !important;
+    margin-top: 20px;
+    width: 580px !important
+}
+
+.kajianhao {
+    position: relative;
+    margin-top: 10px !important
+}
+
+.bodybox .haomaqu .haomaqul .haomaline .numberqu .kajianhao .addLiuHe {
+    position: absolute;
+    left: 346px;
+    top: 0;
+    display: block;
+    width: 50px;
+    height: 50px;
+    background: url(../img/icon/xiaoliuico.png) no-repeat -180px -20px
+}
+
+.bodybox .haomaqu .haomaqul .haomaline .numberqu .kajianhao .sh_xzlist li {
+    height: auto !important;
+    color: #000
+}
+
+#klsf {
+    height: 166px
+}
+
+.bodybox .haomaqu .haomaqul .haomaline .numberqu .nuberqutit .hLeftDiv {
+    width: 100% !important
+}
+
+.bodybox .haomaqu .haomaqul .haomaline .numberqu .nuberqutit .hLeftDiv span {
+    font-size: 16px
+}
+
+.data {
+    margin-right: 20px
+}
+
+.haomaqur_l {
+    margin-left: 0 !important
+}
+
+.mextnum {
+    height: 117px;
+    line-height: 18px;
+    background: #fff;
+    border-bottom: 0 !important;
+    white-space: nowrap;
+    padding-top: 25px
+}
+
+.mextnum>span {
+    display: none !important
+}
+
+.mextnum span {
+    display: inline-block;
+    color: #f8223c
+}
+
+.mextnum .timedown {
+    border-top: 0 !important;
+    height: 55px;
+    line-height: 37px
+}
+
+.mextnum .timedown span {
+    color: #000
+}
+
+.mextnum .timedown .tibox {
+    line-height: 57px;
+    vertical-align: top;
+    margin-right: 5px;
+    display: none
+}
+
+.mextnum .timedown #spadiv {
+    display: inline-block;
+    height: 100%
+}
+
+.mextnum .timedown #spadiv span {
+    margin-right: 6px
+}
+
+.mextnum .timedown #spadiv .timer {
+    padding: 3px 0;
+    background: #313242;
+    color: #ffd200;
+    margin-top: 8px;
+    height: 36px;
+    width: 28px;
+    text-align: center
+}
+
+.bodybox .haomaqu .haomaqul .haomaline .numberqu .totalScore {
+    margin-left: 25px !important;
+    width: 100px !important;
+    color: #666;
+    font-weight: 600
+}
+
+.bodybox .haomaqu .haomaqul {
+    width: 732px !important
+}
+
+.bodybox .haomaqu .haomaqur .haomaqur_l {
+    width: 257px !important
+}
+
+.addpic {
+    text-align: center;
+    margin-right: 0 !important;
+    background: url(../img/icon/xiaoliuico.png) no-repeat -182px -15px !important
+}
+
+.lastnub {
+    margin-right: 0
+}
+
+.red {
+    background: #f8223c
+}
+
+.blue {
+    background: #0899ec
+}
+
+.green {
+    background: #21c066
+}
+
+.nub07 {
+    background: url(../img/icon/xiaoliuico.png) no-repeat -187px -18px !important
+}
+
+.numberbox li {
+    border-radius: 50%
+}
+
+.numberbox li:nth-child(6) {
+    margin-right: 9px !important
+}
+
+.time_btn {
+    width: 160px;
+    height: 35px;
+    line-height: 35px;
+    background: #f8223c;
+    border-radius: 3px;
+    text-align: center;
+    margin-top: 11px;
+    margin-left: 24px;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    cursor: pointer
+}
+
+.time_btn i {
+    float: left;
+    width: 26px;
+    height: 26px;
+    background: url(../img/reli_ico.png) 100% 100% no-repeat;
+    position: relative;
+    top: 3px;
+    left: 7px
+}
+
+.time_btn span {
+    color: #fff !important;
+    margin-left: 5px
+}
+
+.time_btn b {
+    border: 5px solid transparent;
+    border-top-color: #fff;
+    position: relative;
+    right: 12px;
+    top: 16px;
+    float: right
+}
+
+.time_btn b.cheb {
+    transform: rotate(180deg);
+    top: 11px
+}
+
+.timeboxbg {
+    width: 360px
+}
+
+.timeboxbg div {
+    width: 315px;
+    background: #fff;
+    overflow: hidden;
+    margin: 0 auto
+}
+
+.timeboxbg div li {
+    float: left;
+    width: 43px;
+    height: 43px;
+    line-height: 43px;
+    text-align: center;
+    margin-right: 2px
+}
+
+.timeboxbg #date_year {
+    padding-top: 20px;
+    height: 30px;
+    line-height: 30px
+}
+
+.timeboxbg #date_year p {
+    font-size: 28px;
+    display: inline-block;
+    width: 250px
+}
+
+.timeboxbg #date_year button:first-child {
+    margin-right: 5px
+}
+
+.timeboxbg #date_year button {
+    height: 30px;
+    line-height: 30px;
+    width: 25px;
+    text-align: center;
+    font-size: 28px;
+    border: 0;
+    background: #fff
+}
+
+.timeboxbg #date_year button:focus {
+    outline: 0;
+    opacity: .8
+}
+
+.timeboxbg #date_day li {
+    margin-bottom: 13px
+}
+
+.timeboxbg #date_day .red {
+    border-radius: 50%;
+    background: #fb223d;
+    color: #fff
+}
+
+.timeboxbg #date_day .grey {
+    border-radius: 50%;
+    background: #e4e5ea;
+    color: #656766
+}
+
+.timeboxbg #date_day p {
+    height: 280px;
+    width: 100%;
+    text-align: center;
+    line-height: 280px;
+    color: #796766;
+    font-size: 16px
+}
+
+.timeboxbg .datekinds {
+    font-size: 14px;
+    color: #666;
+    width: 300px;
+    height: 25px;
+    line-height: 25px;
+    margin-left: 20px;
+    padding-bottom: 10px
+}
+
+.timeboxbg .datekinds span {
+    display: inline-block;
+    background: green
+}
+
+.timeboxbg .datekinds .jzr {
+    background: #f8223c
+}
+
+.timeboxbg .datekinds .jzr,
+.timeboxbg .datekinds .ykjrq {
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    border-radius: 10px
+}
+
+.timeboxbg .datekinds .ykjrq {
+    margin-left: 20px;
+    background: #dfe0eb
+}
+
+.timeboxbg #dateframe {
+    width: 320px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    height: auto;
+    background: #fff
+}
+
+.timeboxbg #dateframe .datekinds {
+    font-size: 14px;
+    color: #666;
+    width: 300px;
+    height: 25px;
+    line-height: 25px;
+    margin-left: 20px;
+    padding-bottom: 10px
+}
+
+.timeboxbg #dateframe .datekinds span {
+    display: inline-block;
+    background: green
+}
+
+.timeboxbg #dateframe .datekinds .jzr {
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    border-radius: 10px;
+    background: #f8223c
+}
+
+.timeboxbg #dateframe .datekinds .ykjrq {
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    border-radius: 10px;
+    margin-left: 20px;
+    background: #dfe0eb
+}
+
+.timedown {
+    position: relative
+}
+
+.timeboxbg {
+    display: none;
+    position: absolute;
+    background: #fff;
+    z-index: 1;
+    top: 106px;
+    box-shadow: 0 0 32px 2px rgba(0, 0, 0, .3);
+    left: -80px
+}
+
+.timeboxbg.timeboxbgche {
+    display: block
+}
+
+#hkheader_box .inline {
+    width: 1200px;
+    height: auto;
+    overflow: hidden;
+    background: #fff;
+    margin: 0 auto
+}
+
+#hkheader_box .inline ul {
+    width: 1160px;
+    height: 50px;
+    line-height: 50px;
+    margin-left: 20px;
+    border-bottom: 1px dashed #dbdbdb
+}
+
+#hkheader_box .inline .luzhu {
+    border-bottom: none
+}
+
+#hkheader_box .inline li {
+    float: left;
+    height: 30px;
+    line-height: 30px !important;
+    margin: 0 12px;
+    font-size: 14px;
+    color: #555;
+    margin-top: 10px
+}
+
+#hkheader_box .inline li.checked {
+    box-sizing: border-box;
+    padding: 0 10px;
+    background: #f8223c;
+    border-radius: 4px
+}
+
+#hkheader_box .inline li.checked a {
+    color: #fff !important
+}
+
+#hkheader_box .inline li a:hover {
+    color: #f8223c
+}
+
+#hkheader_box .inline li .checked {
+    color: #fff;
+    line-height: 30px
+}
+
+#hkheader_box .inline li .checked:hover {
+    color: #fff
+}
+
+#hkheader_box .inline .title {
+    margin-left: 0;
+    font-size: 16px;
+    color: #333
+}
+
+#hkheader_box .inline .first_li {
+    margin-left: 0
+}
+
+#hkheader_box .inline .luzhu a {
+    height: 30px;
+    width: auto;
+    line-height: 30px;
+    margin-top: 0
+}
