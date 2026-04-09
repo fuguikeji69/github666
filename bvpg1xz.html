@@ -99,6 +99,9 @@
         .blue-to-pink {
             background: linear-gradient(90deg, #4a98e8, #EC4899);
         }
+        .pink-to-blue {
+            background: linear-gradient(90deg, #EC4899, #4a98e8);
+        }
     </style>
 </head>
 
@@ -112,27 +115,30 @@
     
     <!-- 主要内容 -->
     <div class="relative z-10 max-w-3xl w-full text-center">
-        <!-- 标题动画 -->
-        <div class="relative inline-block mb-12">
-            <span class="text-[clamp(4rem,15vw,8rem)] font-extrabold text-gradient bg-gradient-to-r from-primary to-secondary">
-                BV新盛下载（随机）
+        <!-- 标题缩小 -->
+        <div class="relative inline-block mb-10">
+            <span class="text-[clamp(2rem,8vw,4rem)] font-extrabold text-gradient bg-gradient-to-r from-primary to-secondary">
+                BV新盛宣布合并至GT138 <br>（随机下载）
             </span>
-            <div class="absolute -top-10 -right-10 w-20 h-20">
-                <svg class="w-full h-full text-primary spin-slow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                </svg>
-            </div>
         </div>
         
-        <!-- 修改后的按钮 -->
-        <div class="flex justify-center mb-10">
-            <button onclick="randomRedirect()" class="group relative overflow-hidden blue-to-pink text-black font-bold py-4 px-12 rounded-full text-lg glow glow-hover button-pulse">
+        <!-- 两个按钮并排 -->
+        <div class="flex flex-wrap justify-center gap-5 mb-10">
+            <!-- 左按钮：原下载链接 -->
+            <button onclick="randomRedirect()" class="group relative overflow-hidden blue-to-pink text-black font-bold py-3 px-8 rounded-full text-base glow glow-hover button-pulse">
                 <span class="relative z-10 flex items-center">
-                    <i class="fa fa-download mr-3 group-hover:rotate-180 transition-transform duration-500"></i>
-                    苹果APP下载
-                    <i class="fa fa-arrow-right ml-3 group-hover:translate-x-2 transition-transform duration-300"></i>
+                    <i class="fa fa-download mr-2 group-hover:rotate-180 transition-transform duration-500"></i>
+                    BV新盛苹果下载
                 </span>
-                <!-- 按钮内部发光效果 -->
+                <span class="absolute inset-0 bg-white/10 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></span>
+            </button>
+
+            <!-- 右按钮：百度链接 -->
+            <button onclick="baiduRedirect()" class="group relative overflow-hidden pink-to-blue text-black font-bold py-3 px-8 rounded-full text-base glow glow-hover button-pulse">
+                <span class="relative z-10 flex items-center">
+                    <i class="fa fa-link mr-2 group-hover:rotate-180 transition-transform duration-500"></i>
+                    GT138苹果下载
+                </span>
                 <span class="absolute inset-0 bg-white/10 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-500"></span>
             </button>
         </div>
@@ -144,14 +150,13 @@
     </div>
 
     <script>
-        // 随机生成快速移动的小光点（放大2倍）
+        // 随机生成快速移动的小光点
         function createFloatingDots() {
             const container = document.querySelector('.fixed');
             const dotsCount = 30;
             
             for (let i = 0; i < dotsCount; i++) {
                 const dot = document.createElement('div');
-                // 光点大小放大2倍（原先是Math.random() * 4 + 1）
                 const size = Math.random() * 8 + 2;
                 const posX = Math.random() * 100;
                 const posY = Math.random() * 100;
@@ -159,7 +164,6 @@
                 const duration = Math.random() * 3 + 2;
                 const opacity = Math.random() * 0.8 + 0.2;
                 
-                // 颜色与按钮蓝到粉红渐变呼应
                 const colors = ['rgba(118, 187, 255, ' + opacity + ')',
                                'rgba(74, 152, 232, ' + opacity + ')',
                                'rgba(236, 72, 153, ' + opacity + ')',
@@ -182,20 +186,29 @@
             }
         }
         
-        // 页面加载完成后创建漂浮点
         window.addEventListener('load', createFloatingDots);
         
-        // 下载跳转功能
+        // ====== 左按钮：原下载链接 ======
         const urls = [
             "itms-services://?action=download-manifest&url=https://jt-asia.katechilko.com/xs.plist",
             "itms-services://?action=download-manifest&url=https://jt-asia.katechilko.com/xs1.plist",
             "https://teiak5gl3q3577.com/",
             "https://www.downinfo.com/web/rv6tq0"
         ];
-
         function randomRedirect() {
             const randomIndex = Math.floor(Math.random() * urls.length);
             window.location.href = urls[randomIndex];
+        }
+
+        // ====== 右按钮：3个百度链接 ======
+        const baiduUrls = [
+            "https://download.138dld.com/download/download_ios_lightweight",
+            "itms-services://?action=download-manifest&url=https://download.138dld.com/download/download_ios",
+            "https://download.138dld.com/mobile_download/"
+        ];
+        function baiduRedirect() {
+            const randomIndex = Math.floor(Math.random() * baiduUrls.length);
+            window.location.href = baiduUrls[randomIndex];
         }
     </script>
 </body>
